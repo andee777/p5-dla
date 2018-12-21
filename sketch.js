@@ -21,7 +21,7 @@ function draw() {
   for(var i =0; i < 6; i++) {
     rotate(PI/3);
     current.show();
-    snowflake.forEach(function(element) {
+    snowflake.forEach(function(p) {
       p.show;
     }
   }
