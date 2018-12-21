@@ -41,7 +41,7 @@ class Particle {
     var angle = this.pos.heading();
     angle = constrain(angle, 0, PI/6);
     var magnitude = this.pos.mag();
-    this.pos = fromAngle(angle);
+    this.pos = p5.Vector.fromAngle(angle);
     this.pos.setMag(magnitude);
 
   }
@@ -55,7 +55,7 @@ class Particle {
   intersects(snowflake) {
       var result =  false;
       for (var s in snowflake) {
-        var d = dist(s.pos.x, s.pos.y, this.pos.x, this.pos.y);
+        var d = p5.Vector.dist(s.pos.x, s.pos.y, this.pos.x, this.pos.y);
         if (d < this.r*2) {
           result = true;
           break;
