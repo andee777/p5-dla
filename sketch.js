@@ -17,6 +17,8 @@ function draw() {
   if (!current.finished() &&  !current.intersects(snowflake)) {
     snowflake.push(current);
     current = new Particle();
+    current.update();
+
   }
   for(var i =0; i < 6; i++) {
     rotate(PI/3);
