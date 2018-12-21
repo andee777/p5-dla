@@ -1,8 +1,7 @@
 var current = new Particle();
-
 function setup() {
   createCanvas(720, 400);
-  snowflake = new ArrayList<Particle>();
+  var snowflake = new ArrayList<Particle>();
 
 }
 
