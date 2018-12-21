@@ -58,6 +58,7 @@ class Particle {
       var result =  false;
       for (let i =0; i < snowflake.length; i++) {
         var d = snowflake[i].dist(this);
+        console.log(d);
         if (d < this.r*2) {
           result = true;
           break;
