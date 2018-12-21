@@ -19,13 +19,12 @@ function draw() {
     current = new Particle();
 
   }
-  for(var i =0; i < 6; i++) {
+  for(var i = 0; i < 6; i++) {
     rotate(PI/3);
     current.show();
     console.log(snowflake.length);
-    for (p in snowflake) {
-      console.log(p);
-      p.show();
+    for (let i = 0; i < snowflake.length; i++) {
+      snowflake[i].show();
     }
   }
 
