@@ -30,7 +30,6 @@ function draw() {
 }
 
 class Particle {
-
   constructor(a, b) {
     this.pos = new p5.Vector(a, b);
     this.r = 3;
