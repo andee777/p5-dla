@@ -36,13 +36,13 @@ class Particle {
   }
 
   update() {
-    pos.x -= 1;
-    pos.y += random(-3, 3);
-    var angle = pos.heading();
+    this.pos.x -= 1;
+    this.pos.y += random(-3, 3);
+    var angle = this.pos.heading();
     angle = constrain(angle, 0, PI/6);
-    var magnitude = pos.mag();
-    pos = p5.Vector.fromAngle(angle);
-    pos.setMag(magnitude);
+    var magnitude = this.pos.mag();
+    this.pos = p5.Vector.fromAngle(angle);
+    this.pos.setMag(magnitude);
 
   }
 
