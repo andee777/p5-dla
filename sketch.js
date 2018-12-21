@@ -57,10 +57,7 @@ class Particle {
   intersects(snowflake) {
       var result =  false;
       for (let i =0; i < snowflake.length; i++) {
-        var v0 = createVector(snowflake[i].pos.x, snowflake[i].pos.y);
-
-        var v1 = createVector(this.pos.x, this.pos.y);
-        var d = v0.dist(v1);
+        var d = snowflake[i].dist(this);
         if (d < this.r*2) {
           result = true;
           break;
