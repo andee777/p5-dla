@@ -65,7 +65,7 @@ class Particle {
   }
 
   finished() {
-    return (x < 0);
+    return (this.pos.x < 0);
   }
 
 
