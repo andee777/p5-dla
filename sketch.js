@@ -49,14 +49,14 @@ class Particle {
   show() {
     fill(255);
     stroke(255);
-    ellipse(pos.x, pos.y, r*2, r*2);
+    ellipse(this.pos.x, this.pos.y, this.r*2, this.r*2);
   }
 
   intersects(snowflake) {
       var result =  false;
       for (var s in snowflake) {
-        var d = dist(s.pos.x, s.pos.y, pos.x, pos.y);
-        if (d < r*2) {
+        var d = dist(s.pos.x, s.pos.y, this.pos.x, this.pos.y);
+        if (d < this.r*2) {
           result = true;
           break;
         }
