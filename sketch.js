@@ -55,8 +55,16 @@ class Particle {
     ellipse(pos.x, pos.y, r*2, r*2);
   }
 
-  intersects() {
-
+  intersects(var snowflake) {
+      var result =  false;
+      for (var s in snowflake) {
+        var d = p5.dist(s.pos.x, s.pos.y, pos.x, pos.y);
+        if (d < r*2) {
+          result = true;
+          break;
+        }
+      }
+      return result;
   }
 
   finished() {
