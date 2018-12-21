@@ -52,7 +52,7 @@ class Particle {
     ellipse(pos.x, pos.y, r*2, r*2);
   }
 
-  intersects(var snowflake) {
+  intersects(snowflake) {
       var result =  false;
       for (var s in snowflake) {
         var d = dist(s.pos.x, s.pos.y, pos.x, pos.y);
