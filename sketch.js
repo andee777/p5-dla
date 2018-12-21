@@ -31,7 +31,7 @@ function draw() {
 
 class Particle {
   constructor(a, b) {
-    this.pos = new p5.Vector(a, b);
+    this.pos = createVector(a, b);
     this.r = 3;
   }
 
@@ -41,7 +41,7 @@ class Particle {
     var angle = this.pos.heading();
     angle = constrain(angle, 0, PI/6);
     var magnitude = this.pos.mag();
-    this.pos = p5.Vector.fromAngle(angle);
+    this.pos = fromAngle(angle);
     this.pos.setMag(magnitude);
 
   }
