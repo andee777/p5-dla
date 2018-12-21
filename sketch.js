@@ -23,6 +23,7 @@ function draw() {
     current.show();
     console.log(snowflake.length);
     for (p in snowflake) {
+      console.log(p);
       p.show();
     }
   }
