@@ -22,9 +22,9 @@ function draw() {
     rotate(PI/3);
     current.show();
     console.log(snowflake.length);
-    snowflake.forEach(function(p) {
+    for (p in snowflake) {
       p.show();
-    });
+    }
   }
 
 }
@@ -32,7 +32,7 @@ function draw() {
 class Particle {
   pos;
   r = 1;
-  
+
   constructor(a, b) {
     this.pos = createVector(a, b);
     this.r = 3;
@@ -57,7 +57,7 @@ class Particle {
 
   intersects(snowflake) {
       var result =  false;
-      for (var s in snowflake) {
+      for (s in snowflake) {
         var d = p5.Vector.dist(s.pos.x, s.pos.y, pos.x, pos.y);
         if (d < this.r*2) {
           result = true;
