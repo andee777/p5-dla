@@ -14,14 +14,14 @@ function draw() {
   background(0);
   current.update();
 
-  if (current.finished() &&  !current.intersects(snowflake)) {
+  if (!current.finished() &&  !current.intersects(snowflake)) {
     snowflake.push(current);
     current = new Particle();
   }
   for(var i =0; i < 6; i++) {
     rotate(PI/3);
     current.show();
-    console.log(snowflake);
+    console.log(snowflake.length);
     snowflake.forEach(function(p) {
       p.show;
     });
