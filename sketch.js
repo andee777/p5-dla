@@ -23,8 +23,7 @@ class Particle {
   PVector pos;
   var r;
   constructor(a, b) {
-    pos.x = a;
-    pos.y = b;
+    pos = new PVector(a, b);
     r = 3;
   }
 
