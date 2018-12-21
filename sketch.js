@@ -30,8 +30,9 @@ function draw() {
 }
 
 class Particle {
-  pos = createVector(0, 0);
+  pos;
   r = 1;
+  
   constructor(a, b) {
     this.pos = createVector(a, b);
     this.r = 3;
