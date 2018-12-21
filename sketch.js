@@ -34,7 +34,7 @@ class Particle {
   var r;
 
   constructor(a, b) {
-    this.pos = new PVector(a, b);
+    this.pos = new p5.PVector(a, b);
     this.r = 3;
   }
 
@@ -44,7 +44,7 @@ class Particle {
     var angle = pos.heading();
     angle = constrain(angle, 0, PI/6);
     var magnitude = pos.mag();
-    pos = PVector.fromAngle(angle);
+    pos = p5.PVector.fromAngle(angle);
     pos.setMag(magnitude);
 
   }
