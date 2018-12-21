@@ -30,8 +30,6 @@ function draw() {
 }
 
 class Particle {
-  pos;
-  r = 1;
 
   constructor(a, b) {
     this.pos = createVector(a, b);
@@ -58,7 +56,7 @@ class Particle {
   intersects(snowflake) {
       var result =  false;
       for (s in snowflake) {
-        var d = p5.Vector.dist(s.pos.x, s.pos.y, pos.x, pos.y);
+        var d = p5.Vector.dist(s.pos.x, s.pos.y, this.pos.x, this.pos.y);
         if (d < this.r*2) {
           result = true;
           break;
