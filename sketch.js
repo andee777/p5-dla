@@ -30,7 +30,7 @@ function draw() {
 }
 
 class Particle {
-  p5.PVector pos;
+  var pos;
   var r;
 
   constructor(a, b) {
