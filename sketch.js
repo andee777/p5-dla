@@ -15,13 +15,13 @@ function draw() {
   current.update();
 
   if (current.finished() &&  !current.intersects(snowflake)) {
-    snowflake.add(current);
+    snowflake.push(current);
     current = new Particle();
   }
   for(var i =0; i < 6; i++) {
     rotate(PI/3);
     current.show();
-    for (Particle p : snowflake) {
+    snowflake.forEach(function(element) {
       p.show;
     }
   }
