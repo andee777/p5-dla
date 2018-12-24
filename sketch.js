@@ -10,14 +10,13 @@ function setup() {
 
 function draw() {
   translate(width/2, height/2);
-  rotate(PI/6);
+  rotate(PI/3);
   background(0);
   current.update();
 
   if (!current.finished() &&  !current.intersects(snowflake)) {
     snowflake.push(current);
     current = new Particle();
-
   }
   for(var i = 0; i < 6; i++) {
     rotate(PI/3);
