@@ -38,7 +38,7 @@ class Particle {
 
   update() {
     this.pos.x -= 1;
-    this.pos.y += random(-3, 3);
+    this.pos.y += random(-9, 9);
     var angle = this.pos.heading();
     angle = constrain(angle, 0, PI/3);
     var magnitude = this.pos.mag();
