@@ -40,7 +40,7 @@ class Particle {
     this.pos.x -= 1;
     this.pos.y += random(-3, 3);
     var angle = this.pos.heading();
-    angle = constrain(angle, 0, PI/6);
+    angle = constrain(angle, 0, PI/3);
     var magnitude = this.pos.mag();
     this.pos = p5.Vector.fromAngle(angle);
     this.pos.setMag(magnitude);
@@ -57,7 +57,6 @@ class Particle {
       var result =  false;
       for (let i =0; i < snowflake.length; i++) {
         var v0 = createVector(snowflake[i].pos.x, snowflake[i].pos.y);
-
         var v1 = createVector(this.pos.x, this.pos.y);
         var d = v0.dist(v1);
         if (d < this.r*2) {
