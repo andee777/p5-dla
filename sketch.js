@@ -2,7 +2,7 @@ var current;
 var snowflake;
 
 function setup() {
-  createCanvas(document.window.width, document.window.height);
+  createCanvas(windowWidth, windowHeight);
   current = new Particle(width/2, random(10));
   snowflake = [];
 
@@ -27,6 +27,9 @@ function draw() {
     }
   }
 
+}
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }
 
 class Particle {
