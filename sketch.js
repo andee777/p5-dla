@@ -8,7 +8,7 @@ var hu = 0;
 var shrink = 0.995;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth, windowHeight - 50);
   colorMode(HSB);
   // for (var x = 0; x < width; x += r * 2) {
   //   tree.push(new Walker(x, height));
@@ -53,7 +53,7 @@ function draw() {
 
 }
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+  resizeCanvas(windowWidth, windowHeight - 50);
 }
 
 function Walker(x, y) {
