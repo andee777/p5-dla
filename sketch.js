@@ -1,30 +1,54 @@
-var current;
-var snowflake;
+var tree = [];
+var walkers = [];
+//var r = 4;
+var maxWalkers = 50;
+var iterations = 1000;
+var radius = 8;
+var hu = 0;
+var shrink = 0.995;
 
 function setup() {
-  createCanvas(windowWidth, window.innerHeight);
-  current = new Particle(width/2, random(10));
-  snowflake = [];
+  createCanvas(windowWidth, windowHeight);
+  colorMode(HSB);
+  // for (var x = 0; x < width; x += r * 2) {
+  //   tree.push(new Walker(x, height));
+  // }
 
+  tree[0] = new Walker(width / 2, height / 2);
+  radius *= shrink;
+  for (var i = 0; i < maxWalkers; i++) {
+    walkers[i] = new Walker();
+    radius *= shrink;
+  }
 }
 
 function draw() {
-  translate(width/2, height/2);
-  rotate(PI/3);
   background(0);
-  current.update();
 
-  if (!current.finished() &&  !current.intersects(snowflake)) {
-    snowflake.push(current);
-    current = new Particle();
+  for (var i = 0; i < tree.length; i++) {
+    tree[i].show();
   }
-  for(var i = 0; i < 6; i++) {
-    rotate(PI/3);
-    current.show();
-    console.log(snowflake.length);
-    for (let i = 0; i < snowflake.length; i++) {
-      snowflake[i].show();
+
+  for (var i = 0; i < walkers.length; i++) {
+    walkers[i].show();
+  }
+
+  for (var n = 0; n < iterations; n++) {
+    for (var i = walkers.length - 1; i >= 0; i--) {
+      walkers[i].walk();
+      if (walkers[i].checkStuck(tree)) {
+        walkers[i].setHue(hu % 360);
+        hu += 2;
+        tree.push(walkers[i]);
+        walkers.splice(i, 1);
+      }
     }
+  }
+
+  var r = walkers[walkers.length - 1].r;
+  while (walkers.length < maxWalkers && radius > 1) {
+    radius *= shrink;
+    walkers.push(new Walker());
   }
 
 }
@@ -32,47 +56,76 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
 
-class Particle {
+function Walker(x, y) {
+  if (arguments.length == 2) {
+    this.pos = createVector(x, y);
+    this.stuck = true;
+  } else {
+    this.pos = randomPoint();
+    this.stuck = false;
+  }
+  this.r = radius;
 
-  constructor(a, b) {
-    this.pos = createVector(a, b);
-    this.r = 3;
+  this.walk = function() {
+    var vel = p5.Vector.random2D();
+    // var vel = createVector(random(-1, 1), random(-0.5, 1));
+    this.pos.add(vel);
+    this.pos.x = constrain(this.pos.x, 0, width);
+    this.pos.y = constrain(this.pos.y, 0, height);
   }
 
-  update() {
-    this.pos.x -= 1;
-    this.pos.y += random(-9, 9);
-    var angle = this.pos.heading();
-    angle = constrain(angle, 0, PI/3);
-    var magnitude = this.pos.mag();
-    this.pos = p5.Vector.fromAngle(angle);
-    this.pos.setMag(magnitude);
 
-  }
-
-  show() {
-    fill(255);
-    stroke(255);
-    ellipse(this.pos.x, this.pos.y, this.r*2, this.r*2);
-  }
-
-  intersects(snowflake) {
-      var result =  false;
-      for (let i =0; i < snowflake.length; i++) {
-        var v0 = createVector(snowflake[i].pos.x, snowflake[i].pos.y);
-        var v1 = createVector(this.pos.x, this.pos.y);
-        var d = v0.dist(v1);
-        if (d < this.r*2) {
-          result = true;
-          break;
-        }
+  this.checkStuck = function(others) {
+    for (var i = 0; i < others.length; i++) {
+      var d = distSq(this.pos, others[i].pos);
+      if (d < (this.r * this.r + others[i].r * others[i].r +  2 * others[i].r * this.r)) {
+        //if (random(1) < 0.1) {
+        this.stuck = true;
+        return true;
+        break;
+        //}
       }
-      return result;
+    }
+    return false;
   }
 
-  finished() {
-    return (this.pos.x < 0);
+  this.setHue = function(hu) {
+    this.hu = hu;
   }
 
+  this.show = function() {
+    noStroke();
+    if (this.stuck && typeof this.hu !== 'undefined') {
+      fill(this.hu, 255, 100, 200);
+    } else {
+      fill(360, 0, 255);
+    }
+    ellipse(this.pos.x, this.pos.y, this.r * 2, this.r * 2);
+  }
 
+}
+
+function randomPoint() {
+  var i = floor(random(4));
+
+  if (i === 0) {
+    var x = random(width);
+    return createVector(x, 0);
+  } else if (i === 1) {
+    var x = random(width);
+    return createVector(x, height);
+  } else if (i === 2) {
+    var y = random(height);
+    return createVector(0, y);
+  } else {
+    var y = random(height);
+    return createVector(width, y);
+  }
+}
+
+
+function distSq(a, b) {
+  var dx = b.x - a.x;
+  var dy = b.y - a.y;
+  return dx * dx + dy * dy;
 }
