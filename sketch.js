@@ -23,7 +23,7 @@ function setup() {
 }
 
 function draw() {
-  background(0);
+  background(51);
 
   for (var i = 0; i < tree.length; i++) {
     tree[i].show();
