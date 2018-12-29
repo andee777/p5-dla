@@ -1,31 +1,86 @@
 <html>
   <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="sketch.js"></script>
-  </head>
-  <nav class="navbar navbar-inverse" style="margin-bottom: 0px; border-radius:0px;">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="https://andee777.github.io/">master_k</a>
-      </div>
-      <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">p5.js
-          <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="https://andee777.github.io/p5-flocking/">Flocking</a></li>
-            <li><a href="https://andee777.github.io/p5-dla/">Diffusion Limited Aggregation (DLA)</a></li>
-          </ul>
-        </li>
-        <li><a href="http://159.89.120.104/">Sale System</a></li>
-      </ul>
-    </div>
-  </nav>
+    <link rel="icon" type="image/png" href="k.png" />
 
-  <body>
-  </body>
+    <!--Bootstrap 4 libraries-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
+    <!--mobile initial config-->
+    <meta name = "viewport" content="width = device-width, initial-scale = 1.0">
+
+    <style>
+        body {
+          margin: 0px;
+          padding: 0px;
+          overflow: hidden;
+          background: url("./bg.jpg");
+          background-repeat:no-repeat;
+          background-size: cover;
+          background-position:center;
+          position:absolute;
+          width:100%;
+          height:100%;
+        }
+
+        #k_icon {
+          width: 40px;
+          height: 40px;
+          border: 2px solid black;
+        }
+        #k_icon:hover {
+          border: 4px solid black;
+          transform: scale(1.3, 1.3);
+
+        }
+        #git_icon {
+          width: 40px;
+          height: 40px;
+          border-radius: 25px;
+          border: 2px solid rgb(0, 121, 204);
+          transform: scale(1.3, 1.3);
+        }
+        #git_icon:hover {
+          border: 2px solid white;
+        }
+    </style>
+    </head>
+
+    <body>
+      <nav class="navbar navbar-expand-sm navbar-light" style="border: none; border-radius: 0; background-color:rgba(255, 255, 255, 0.9);">
+        <div class="container-fluid">
+          <div class="position-fixed-right">
+            <a class="navbar-brand" href="http://159.89.120.104/"><img id="k_icon" src="./k.png" class="rounded-circle"></a>
+            <a class="navbar-brand" href="https://andee777.github.io/"><img id="git_icon" src="./git1.JPG"></a>
+          </div>
+
+          <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar" style="border: none; background-color:rgba(255, 255, 255, 0);">
+            <span class="navbar-toggler-icon" style="color:black; font-size:25px;"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">p5.js</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="https://andee777.github.io/p5-flocking/">Flocking</a>
+                  <a class="dropdown-item" href="https://andee777.github.io/p5-dla/">Diffusion Limited Aggregation (DLA)</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Node.js</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="http://159.89.120.104/sale_sys">Sale System</a>
+                  <a class="dropdown-item" href="http://159.89.120.104/demo">Test</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </body>
 </html>
