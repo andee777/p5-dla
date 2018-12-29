@@ -2,8 +2,9 @@
   <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.js"></script>
     <script src="sketch.js"></script>
+    <title>Flocking Demo</title>
+
     <link rel="icon" type="image/png" href="k.png" />
-    <title>Demo DLA</title>
 
     <!--Bootstrap 4 libraries-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -14,83 +15,84 @@
     <!--mobile initial config-->
     <meta name = "viewport" content="width = device-width, initial-scale = 1.0">
 
-      <style>
-          body {
-            margin: 0px;
-            padding: 0px;
-            overflow: hidden;
-          }
-          #wrap {
-            background: url("bg.jpg");
-            background-repeat:no-repeat;
-            background-size: cover;
-            background-position:center;
-            position:absolute;
-            width:100%;
-            height:100%;
-          }
-          #k_icon {
-            width: 40px;
-            height: 40px;
-            transform: scale(1.3, 1.3);
+    <style>
+        body {
+          margin: 0px;
+          padding: 0px;
+          overflow: hidden;
+          background: url("./bg.jpg");
+          background-repeat:no-repeat;
+          background-size: cover;
+          background-position:center;
+          position:absolute;
+          width:100%;
+          height:100%;
+        }
 
-          }
+        #k_icon {
+      		width: 40px;
+      		height: 40px;
+      		animation-name: rot1;
+      		animation-duration: 15s;
+      		animation-timing-function: linear;
+      		animation-iteration-count: infinite;
+        	}
+      	@keyframes rot1 {
+      		0%   {transform: rotate(0deg) scale(1.3, 1.3);}
+      		33%  {transform: rotate(120deg) scale(1.3, 1.3);}
+      		67%  {transform: rotate(240deg) scale(1.3, 1.3);}
+      		100% {transform: rotate(360deg) scale(1.3, 1.3);}
+      	}
+        #k_icon:hover {
+      		border: 2px solid black;
+        }
+        #git_icon {
+          width: 40px;
+      		height: 40px;
+      		object-fit: contain;
+      		border-radius: 25px;
+      		border: 2px solid white;
+      		transform: scale(1.6, 1.6);
+        }
+        #git_icon:hover {
+          transform: scale(1.3, 1.3);
+          border: 2px solid rgb(0, 121, 204);
+        }
 
-          #k_icon:hover {
-            transform: scale(1.3, 1.3) rotate(180deg);
-            border: 2px double black;
-          }
-
-          #git_icon {
-            width: 40px;
-        		height: 40px;
-        		object-fit: contain;
-        		border-radius: 25px;
-        		border: 2px solid white;
-        		transform: scale(1.6, 1.6);
-          }
-          #git_icon:hover {
-            transform: scale(1.3, 1.3);
-            border: 2px solid rgb(0, 121, 204);
-          }
-
-
-      </style>
+    </style>
     </head>
 
     <body>
-      <div id="wrap">
-        <nav class="navbar navbar-expand-sm navbar-light text-primary" style="border: none; border-radius: 0; background-color:rgba(255, 255, 255, 0.9);">
-          <div class="container-fluid">
-            <div class="position-fixed-right">
-              <a class="navbar-brand" href="http://159.89.120.104/"><img id="k_icon" src="./k.png" class="rounded-circle"></a>
-              <a class="navbar-brand" href="https://andee777.github.io/"><img id="git_icon" src="./git1.JPG"></a>
-            </div>
-
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar" style="border: none; background-color:rgba(255, 255, 255, 0);">
-              <span class="navbar-toggler-icon" style="color:black; font-size:25px;"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="myNavbar">
-              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle text-primary" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">p5.js</a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="https://andee777.github.io/p5-flocking/">Flocking</a>
-                    <a class="dropdown-item" href="https://andee777.github.io/p5-dla/">Diffusion Limited Aggregation (DLA)</a>
-                  </div>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle text-primary" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Node.js</a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="http://159.89.120.104/sale_sys">Sale System</a>
-                    <a class="dropdown-item" href="http://159.89.120.104/demo">Test</a>
-                  </div>
-                </li>
-              </ul>
-            </div>
+      <nav class="navbar navbar-expand-sm navbar-light" style="border: none; border-radius: 0; background-color:rgba(255, 255, 255, 0.9);">
+        <div class="container-fluid">
+          <div class="position-fixed-right">
+            <a class="navbar-brand" href="http://159.89.120.104/"><img id="k_icon" src="./k.png" class="rounded-circle"></a>
+            <a class="navbar-brand" href="https://andee777.github.io/"><img id="git_icon" src="./git1.JPG"></a>
           </div>
-        </nav>
-      </div>
+
+          <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar" style="border: none; background-color:rgba(255, 255, 255, 0);">
+            <span class="navbar-toggler-icon" style="color:black; font-size:25px;"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">p5.js</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="https://andee777.github.io/p5-flocking/">Flocking</a>
+                  <a class="dropdown-item" href="https://andee777.github.io/p5-dla/">Diffusion Limited Aggregation (DLA)</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">Node.js</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="http://159.89.120.104/sale_sys">Sale System</a>
+                  <a class="dropdown-item" href="http://159.89.120.104/demo">Test</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </body>
 </html>
